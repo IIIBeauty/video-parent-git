@@ -11,7 +11,7 @@
                 <el-menu router>
                     <!-- index相当于router-link中的to -->
                     <el-menu-item index="/video">视频管理</el-menu-item>
-<!--                  <el-menu-item index="/sheet">主讲人管理</el-menu-item>-->
+                    <el-menu-item index="/speaker">主讲人管理</el-menu-item>
 <!--                    <el-menu-item index="/sheet">课程管理</el-menu-item>-->
                 </el-menu>
 

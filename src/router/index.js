@@ -6,6 +6,7 @@ import VueCookies from 'vue-cookies'
 const Video = () => import("../views/Video")
 const Login = () => import("../views/Login")
 const Index = () => import("../views/Index")
+const Speaker = () => import("../views/Speaker")
 
 Vue.use(Router)   //使用插件
 Vue.use(VueCookies)
@@ -30,6 +31,11 @@ const router = new Router({
                     path: '/video',
                     component: Video,
                     meta:["video:list"]
+                },
+                {
+                    path: '/speaker',
+                    component: Speaker,
+                    meta:["speaker:list"]
                 },
             ]
         },

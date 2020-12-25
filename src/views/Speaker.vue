@@ -7,37 +7,17 @@
                     title="提示"
                     :visible.sync="updatedialogVisible"
                     width="30%">
-                <el-form :model="videoModel" :rules="rules" ref="updatemusicForm" label-width="100px" class="demo-ruleForm">
-                    <el-form-item label="id" prop="id">
-                        <el-input v-model="videoModel.id" readonly="readonly"></el-input>
+                <el-form :model="speakerModel" :rules="rules" ref="updatemusicForm" label-width="100px" class="demo-ruleForm">
+                    <el-form-item label="名称" prop="speakerName">
+                        <el-input v-model="speakerModel.speakerName"></el-input>
                     </el-form-item>
 
-                    <el-form-item label="名称" prop="title">
-                        <el-input v-model="videoModel.title"></el-input>
+                    <el-form-item label="职位" prop="speakerJob">
+                        <el-input v-model="speakerModel.speakerJob"></el-input>
                     </el-form-item>
 
-                    <el-form-item label="讲师名字" prop="speaker.speakerName">
-                        <el-input v-model="videoModel.speakerName"></el-input>
-                    </el-form-item>
-
-                    <el-form-item label="所属课程" prop="courseTitle">
-                        <el-input v-model="videoModel.courseTitle"></el-input>
-                    </el-form-item>
-
-                    <el-form-item label="时长" prop="time">
-                        <el-input v-model="videoModel.time"></el-input>
-                    </el-form-item>
-
-                    <el-form-item label="封面图片地址" prop="imageUrl">
-                        <el-input v-model="videoModel.imageUrl"></el-input>
-                    </el-form-item>
-
-                    <el-form-item label="视频播放地址" prop="videoUrl">
-                        <el-input v-model="videoModel.videoUrl"></el-input>
-                    </el-form-item>
-
-                    <el-form-item label="备注" prop="detail">
-                        <el-input v-model="videoModel.detail"></el-input>
+                    <el-form-item label="简介" prop="speakerDesc">
+                        <el-input v-model="speakerModel.speakerDesc"></el-input>
                     </el-form-item>
 
                     <el-form-item>
@@ -53,37 +33,17 @@
                     title="提示"
                     :visible.sync="dialogVisible"
                     width="30%">
-                <el-form :model="videoModel" :rules="rules" ref="musicForm" label-width="100px" class="demo-ruleForm">
-                    <el-form-item label="id" prop="id">
-                    <el-input v-model="videoModel.id" readonly="readonly"></el-input>
+                <el-form :model="speakerModel" :rules="rules" ref="musicForm" label-width="100px" class="demo-ruleForm">
+                    <el-form-item label="名称" prop="speakerName">
+                        <el-input v-model="speakerModel.speakerName"></el-input>
                     </el-form-item>
 
-                    <el-form-item label="名称" prop="title">
-                        <el-input v-model="videoModel.title"></el-input>
+                    <el-form-item label="职位" prop="speakerJob">
+                        <el-input v-model="speakerModel.speakerJob"></el-input>
                     </el-form-item>
 
-                    <el-form-item label="教室名字" prop="speaker.speakerName">
-                        <el-input v-model="videoModel.speakerName"></el-input>
-                    </el-form-item>
-
-                    <el-form-item label="所属课程" prop="courseTitle">
-                        <el-input v-model="videoModel.courseTitle"></el-input>
-                    </el-form-item>
-
-                    <el-form-item label="时长" prop="time">
-                        <el-input v-model="videoModel.time"></el-input>
-                    </el-form-item>
-
-                    <el-form-item label="封面图片地址" prop="imageUrl">
-                        <el-input v-model="videoModel.imageUrl"></el-input>
-                    </el-form-item>
-
-                    <el-form-item label="视频播放地址" prop="videoUrl">
-                        <el-input v-model="videoModel.videoUrl"></el-input>
-                    </el-form-item>
-
-                    <el-form-item label="备注" prop="detail">
-                        <el-input v-model="videoModel.detail"></el-input>
+                    <el-form-item label="简介" prop="speakerDesc">
+                        <el-input v-model="speakerModel.speakerDesc"></el-input>
                     </el-form-item>
 
                     <el-form-item>
@@ -97,7 +57,7 @@
             <el-button type="success" @click="dialogVisible = true">添加</el-button>
 
             <el-table
-                    :data="videos"
+                    :data="speakers"
                     border
                     style="width: 100%">
                 <el-table-column
@@ -108,36 +68,22 @@
 
                 <el-table-column
                         align="center"
-                        prop="title"
+                        prop="speakerName"
                         label="名称"
                         width="180">
                 </el-table-column>
 
                 <el-table-column
                         align="center"
-                        prop="detail"
-                        label="介绍"
+                        prop="speakerJob"
+                        label="职位"
                         width="180">
                 </el-table-column>
 
                 <el-table-column
                         align="center"
-                        prop="speaker.speakerName"
-                        label="讲师"
-                        width="180">
-                </el-table-column>
-
-                <el-table-column
-                        align="center"
-                        prop="time"
-                        label="时长"
-                        width="180">
-                </el-table-column>
-
-                <el-table-column
-                        align="center"
-                        prop="playNum"
-                        label="播放次数"
+                        prop="speakerDesc"
+                        label="简介"
                         width="180">
                 </el-table-column>
 
@@ -177,32 +123,30 @@
     import moment from 'moment'
 
     export default {
-        name: "Video",
+        name: "Speaker",
         data() {
             return {
 
                 //msg: 'app vue',
 
-                videoModel: {
+                speakerModel: {
                     id: '',
-                    title: '',
-                    detail: '',
                     speakerName: '',
-                    time: '',
-                    playNum: '',
+                    speakerJob: '',
+                    speakerDesc: '',
                 },
                 rules: {
                     id: [
                         { required: true, message: '请输入编号', trigger: 'blur' },
                         { min: 1, max: 5, message: '长度在 1 到 5 个字符', trigger: 'blur' }
                     ],
-                    title: [
+                    speakerName: [
                         { required: true, message: '请输入名称', trigger: 'blur' }
                     ]
                 },
                 dialogVisible:false,
                 updatedialogVisible:false,
-                videos: [],
+                speakers: [],
                 pageSize:'',//每页显示多少条
                 pageNum:'',//当前页
                 total:''//总记录数
@@ -219,7 +163,7 @@
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
 
-                        this.axios.post('/video/modifyVideo',this.videoModel)
+                        this.axios.post('/speaker/updateSpeakerById',this.speakerModel)
                             .then(resp => {
                                 if(resp.data == "success"){
                                     this.$refs[formName].resetFields();//清空下一次添加表单中的数据
@@ -239,7 +183,7 @@
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
 
-                        this.axios.post('/video/insertVideo',this.videoModel)
+                        this.axios.post('/speaker/insertSpeaker',this.speakerModel)
                             .then(resp => {
                                 if(resp.data == "success"){
                                     this.$refs[formName].resetFields();//清空下一次添加表单中的数据
@@ -266,8 +210,8 @@
             },
 
             handleCurrentChange(pageNum) {
-                this.$http.get("/video/findPage?pageNum="+pageNum).then((response) => {
-                    this.videos = response.data.list
+                this.$http.get("/speaker/findPage?pageNum="+pageNum).then((response) => {
+                    this.speakers = response.data.list
                     this.pageSize = response.data.pageSize
                     this.pageNum = response.data.pageNum
                     this.total = response.data.total
@@ -275,9 +219,9 @@
             },
 
             handleEdit(id) {
-                this.$http.get("/video/findById/"+id).then((response) => {
+                this.$http.get("/speaker/findById/"+id).then((response) => {
 
-                    this.videoModel = response.data;
+                    this.speakerModel = response.data;
                     //alert(this.musicModel.musicName)
                     this.updatedialogVisible = true;
                 })
@@ -295,7 +239,7 @@
                         message: '删除成功!'
                     });
 
-                    this.$http.get("/video/deleteById/"+id).then((response) => {
+                    this.$http.get("/speaker/deleteById/"+id).then((response) => {
                         if(response.data == 'success'){
                             this.handleCurrentChange(this.pageNum);//跳转到当前页
                         }
@@ -319,8 +263,8 @@
             //   this.musics = response.data
             // })
 
-            this.$http.get("/video/findPage").then((response) => {
-                this.videos = response.data.list
+            this.$http.get("/speaker/findPage").then((response) => {
+                this.speakers = response.data.list
                 this.pageSize = response.data.pageSize
                 this.pageNum = response.data.pageNum
                 this.total = response.data.total
@@ -339,7 +283,7 @@
             let meta = to.meta;
             let flag = false;
             meta.forEach(permission => {
-                if(permission.indexOf("video:list")>-1){
+                if(permission.indexOf("speaker:list")>-1){
                     flag = true;
                 }
             })
